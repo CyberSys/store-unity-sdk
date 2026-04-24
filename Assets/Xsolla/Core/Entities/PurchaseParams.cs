@@ -38,6 +38,12 @@ namespace Xsolla.Core
 		public string tracking_id;
 
 		/// <summary>
+		/// Optional source where the mobile app was installed from. Used for Android/iOS payment requests only.
+		/// If omitted, the SDK sends <c>unknown</c>.
+		/// </summary>
+		public string install_source;
+
+		/// <summary>
 		/// Project specific parameters.
 		/// </summary>
 		public Dictionary<string, object> custom_parameters;
