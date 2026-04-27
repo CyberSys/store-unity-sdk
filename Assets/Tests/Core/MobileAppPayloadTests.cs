@@ -8,7 +8,6 @@ namespace Xsolla.Tests.Core
 	public class MobileAppPayloadTests
 	{
 		private const string GeneratorTypeName = "Xsolla.Core.PurchaseParamsGenerator, Xsolla";
-		private const string PayloadModeTypeName = "Xsolla.Core.MobileAppPayloadMode, Xsolla";
 		private const string OrdersTypeName = "Xsolla.Orders.XsollaOrders, Xsolla";
 
 		[TearDown]
@@ -70,23 +69,6 @@ namespace Xsolla.Tests.Core
 		}
 
 		[Test]
-		public void GenerateUser_ManagedByNativeAndroidSdk_DisablesMobileApp()
-		{
-			SetForcedPlatform("android");
-			var purchaseParams = new PurchaseParams {
-				tracking_id = "tracking-2",
-				install_source = "google_play"
-			};
-
-			var user = GenerateUser(purchaseParams, "ManagedByNativeAndroidSdk");
-
-			Assert.NotNull(user);
-			Assert.IsNull(GetFieldValue<object>(user, "mobile_app"));
-			var trackingId = GetFieldValue<object>(user, "tracking_id");
-			Assert.AreEqual("tracking-2", GetFieldValue<string>(trackingId, "value"));
-		}
-
-		[Test]
 		public void GeneratePaymentTokenUser_ContainsMobileAppPayload()
 		{
 			SetForcedPlatform("android");
@@ -102,14 +84,12 @@ namespace Xsolla.Tests.Core
 			StringAssert.Contains("\"install_source\":\"google_play\"", json);
 		}
 
-		private static object GenerateUser(PurchaseParams purchaseParams, string payloadMode = "ManagedByEnterpriseSdk")
+		private static object GenerateUser(PurchaseParams purchaseParams)
 		{
 			var generatorType = Type.GetType(GeneratorTypeName);
-			var payloadModeType = Type.GetType(PayloadModeTypeName);
-			var mode = Enum.Parse(payloadModeType, payloadMode);
 			var method = generatorType.GetMethod("GenerateUser", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 
-			return method?.Invoke(null, new[] { purchaseParams, mode });
+			return method?.Invoke(null, new object[] { purchaseParams });
 		}
 
 		private static object GeneratePaymentTokenUser(PurchaseParams purchaseParams)

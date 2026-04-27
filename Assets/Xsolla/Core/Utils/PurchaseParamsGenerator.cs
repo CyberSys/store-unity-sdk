@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Xsolla.Core
 {
-	internal enum MobileAppPayloadMode
-	{
-		ManagedByEnterpriseSdk,
-		ManagedByNativeAndroidSdk
-	}
-
 	internal static class PurchaseParamsGenerator
 	{
 		private const string UnknownInstallSource = "unknown";
@@ -57,13 +51,13 @@ namespace Xsolla.Core
 			request.user = GenerateUser(purchaseParams);
 		}
 
-		internal static PurchaseParamsRequest.User GenerateUser(PurchaseParams purchaseParams, MobileAppPayloadMode payloadMode = MobileAppPayloadMode.ManagedByEnterpriseSdk)
+		internal static PurchaseParamsRequest.User GenerateUser(PurchaseParams purchaseParams)
 		{
 			var user = new PurchaseParamsRequest.User();
 
 			ProcessUserTrackingId(user, purchaseParams);
 			ProcessUserCountry(user, purchaseParams);
-			ProcessMobileApp(user, purchaseParams, payloadMode);
+			ProcessMobileApp(user, purchaseParams);
 
 			return user.country == null && user.tracking_id == null && user.mobile_app == null
 				? null
@@ -88,11 +82,8 @@ namespace Xsolla.Core
 			user.country = purchaseParams.country;
 		}
 
-		private static void ProcessMobileApp(PurchaseParamsRequest.User user, PurchaseParams purchaseParams, MobileAppPayloadMode payloadMode)
+		private static void ProcessMobileApp(PurchaseParamsRequest.User user, PurchaseParams purchaseParams)
 		{
-			if (payloadMode == MobileAppPayloadMode.ManagedByNativeAndroidSdk)
-				return;
-
 			var platform = GetMobilePlatform();
 			if (platform == null)
 				return;
