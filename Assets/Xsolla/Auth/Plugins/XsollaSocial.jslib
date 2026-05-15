@@ -414,6 +414,9 @@ mergeInto(LibraryManager.library, {
         };
 
         var messageHandler = function (event) {
+            if (event.origin !== window.location.origin) {
+                return;
+            }
             if (!event.data || event.data.type !== "xsolla-additional-info-auth") {
                 return;
             }
@@ -556,6 +559,9 @@ mergeInto(LibraryManager.library, {
             };
     
             var messageHandler = function (event) {
+                if (event.origin !== window.location.origin) {
+                    return;
+                }
                 if (!event.data || event.data.type !== "xsolla-additional-info-auth") {
                     return;
                 }

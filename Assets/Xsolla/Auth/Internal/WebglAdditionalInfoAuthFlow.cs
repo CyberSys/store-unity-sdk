@@ -43,6 +43,9 @@ namespace Xsolla.Auth
 				return;
 			}
 
+			UnsubscribeFromWebCallbacks();
+			IsCompleted = false;
+
 			Screen.fullScreen = false;
 			SubscribeToWebCallbacks();
 

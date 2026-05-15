@@ -79,7 +79,7 @@
                 if (redirectParam) {
                     const callbackUrl = new URL(decodeSafe(redirectParam));
                     callbackUrl.searchParams.set("sdk_flow_id", flowId);
-                    authUrl.searchParams.set("redirect_uri", encodeURIComponent(callbackUrl.toString()));
+                    authUrl.searchParams.set("redirect_uri", callbackUrl.toString());
                     redirectTarget = authUrl.toString();
                 }
             } catch (parseError) {
