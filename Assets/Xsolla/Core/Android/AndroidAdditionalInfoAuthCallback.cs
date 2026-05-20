@@ -12,7 +12,7 @@ namespace Xsolla.Core
 		private readonly Action OnCancel;
 
 		public AndroidAdditionalInfoAuthCallback(AndroidHelper androidHelper, Action<string, string> onSuccess, Action<Error> onError, Action onCancel)
-			: base("com.xsolla.sdk.unity.Example.androidProxies.AdditionalInfoAuthCallback")
+			: base($"{Application.identifier}.androidProxies.AdditionalInfoAuthCallback")
 		{
 			AndroidHelper = androidHelper;
 			OnSuccess = onSuccess;

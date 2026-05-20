@@ -35,7 +35,7 @@ public class AdditionalInfoAuthProxyActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            finish();
+            emitCancelAndFinish();
             return;
         }
 

@@ -51,8 +51,10 @@ namespace Xsolla.Auth
 				var redirectUrl = RedirectUrlHelper.GetRedirectUrl(null);
 				XDebug.Log($"{nameof(AndroidAdditionalInfoAuthFlow)}: launching Android additional info auth flow");
 
-				var proxyActivity = new AndroidJavaObject($"{Application.identifier}.androidProxies.AdditionalInfoAuthProxyActivity");
-				proxyActivity.CallStatic("perform", androidHelper.CurrentActivity, callback, loginUrl, redirectUrl);
+				using (var proxyActivity = new AndroidJavaClass($"{Application.identifier}.androidProxies.AdditionalInfoAuthProxyActivity"))
+				{
+					proxyActivity.CallStatic("perform", androidHelper.CurrentActivity, callback, loginUrl, redirectUrl);
+				}
 			}
 			catch (Exception exception)
 			{
