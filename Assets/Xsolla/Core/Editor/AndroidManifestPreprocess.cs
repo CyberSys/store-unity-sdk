@@ -21,6 +21,7 @@ namespace Xsolla.Core.Editor
 			SetupProxyActivity("PaymentsProxyActivity");
 			SetupProxyActivity("SocialAuthProxyActivity");
 			SetupProxyActivity("XsollaWidgetAuthProxyActivity");
+			SetupProxyActivity("AdditionalInfoAuthProxyActivity");
 		}
 
 		private static void SetupWeChat()
