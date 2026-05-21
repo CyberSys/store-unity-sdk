@@ -11,6 +11,8 @@ namespace Xsolla.Auth
 			return XsollaSettings.InAppBrowserEnabled
 				? new StandaloneInAppBrowserAdditionalInfoAuthFlow(onSuccess, onError, onCancel)
 				: new StandaloneSystemBrowserAdditionalInfoAuthFlow(onSuccess, onError);
+#elif UNITY_WEBGL
+			return new WebglAdditionalInfoAuthFlow(onSuccess, onError, onCancel);
 #else
 			return null;
 #endif
