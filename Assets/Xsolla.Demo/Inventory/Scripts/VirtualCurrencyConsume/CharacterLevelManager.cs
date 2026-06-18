@@ -113,7 +113,7 @@ namespace Xsolla.Demo
 			{
 				var errorMessage = "Not enough currency amount to up the level";
 				XDebug.Log(errorMessage);
-				StoreDemoPopup.ShowWarning(new Error(errorMessage: errorMessage));
+				StoreDemoPopup.ShowWarning(new Error(ErrorType.InvalidData, errorMessage: errorMessage));
 			}
 		}
 

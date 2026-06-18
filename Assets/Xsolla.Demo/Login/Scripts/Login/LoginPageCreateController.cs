@@ -116,13 +116,13 @@ namespace Xsolla.Demo
 			else if (!isEmailValid)
 			{
 				XDebug.Log($"Invalid email: {email}");
-				Error error = new Error(errorType: ErrorType.RegistrationNotAllowedException, errorMessage: "Invalid email");
+				Error error = new Error(errorType: ErrorType.InvalidData, errorMessage: "Invalid email");
 				OnError?.Invoke(error);
 			}
 			else
 			{
 				XDebug.LogError($"Fields are not filled. Username: '{username}' Password: '{password}'");
-				Error error = new Error(errorType: ErrorType.RegistrationNotAllowedException, errorMessage: $"Not all fields are filled");
+				Error error = new Error(errorType: ErrorType.InvalidData, errorMessage: $"Not all fields are filled");
 				base.OnError?.Invoke(error);
 			}
 

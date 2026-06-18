@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using Xsolla.Auth;
@@ -31,14 +31,14 @@ namespace Xsolla.Demo
 			var appId = DemoSettings.SteamAppId;
 			if (!int.TryParse(appId, out _))
 			{
-				onError?.Invoke(new Error(errorMessage: "Steam auth failed. Can't parse SteamAppId"));
+				onError?.Invoke(new Error(ErrorType.InvalidProjectSettings, errorMessage: "Steam auth failed. Can't parse SteamAppId"));
 				yield break;
 			}
 
 			var sessionTicket = SteamUtils.GetSteamSessionTicket();
 			if (string.IsNullOrEmpty(sessionTicket))
 			{
-				onError?.Invoke(new Error(errorMessage: "Steam auth failed. Can't get session ticket"));
+				onError?.Invoke(new Error(ErrorType.UnknownError, errorMessage: "Steam auth failed. Can't get session ticket"));
 				yield break;
 			}
 

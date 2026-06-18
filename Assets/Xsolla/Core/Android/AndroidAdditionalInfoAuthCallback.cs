@@ -35,7 +35,7 @@ namespace Xsolla.Core
 			var safeMessage = string.IsNullOrEmpty(message)
 				? "Unknown additional info auth error"
 				: message;
-			AndroidHelper.MainThreadExecutor.Enqueue(() => OnError?.Invoke(new Error(errorMessage: safeMessage)));
+ 			AndroidHelper.MainThreadExecutor.Enqueue(() => OnError?.Invoke(new Error(ErrorType.UnknownError, errorMessage: safeMessage)));
 		}
 	}
 }

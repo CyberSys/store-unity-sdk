@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xsolla.Auth;
 using Xsolla.Core;
 
@@ -10,7 +10,7 @@ namespace Xsolla.Demo
 		{
 			if (!TryExtractProvider(args, out var socialProvider))
 			{
-				onError?.Invoke(new Error(errorMessage: $"{GetType().Name}. Auth failed. Can't extract provider"));
+				onError?.Invoke(new Error(ErrorType.InvalidData, errorMessage: $"{GetType().Name}. Auth failed. Can't extract provider"));
 				return;
 			}
 

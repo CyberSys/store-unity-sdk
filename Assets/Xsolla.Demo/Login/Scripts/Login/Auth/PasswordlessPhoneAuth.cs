@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 using Xsolla.Auth;
 using Xsolla.Core;
@@ -16,7 +16,7 @@ namespace Xsolla.Demo
 			if (!TryExtractArgs(args, out var requester, out var phone))
 			{
 				XDebug.LogError("PasswordlessPhoneAuth.TryAuth: Could not extract arguments");
-				onError?.Invoke(new Error(errorMessage: "Passwordless auth failed"));
+				onError?.Invoke(new Error(ErrorType.InvalidData, errorMessage: "Passwordless auth failed"));
 				return;
 			}
 
