@@ -9,7 +9,7 @@ namespace Xsolla.Demo
 		public override void TryAuth(object[] _, Action onSuccess, Action<Error> onError)
 		{
 #if !(UNITY_ANDROID || UNITY_IOS)
-			onError?.Invoke(new Error(ErrorType.MethodIsNotAllowed, errorMessage: "Device ID auth is not supported for this platform"));
+			onError?.Invoke(new Error(ErrorType.NotSupportedOnCurrentPlatform, errorMessage: "Device ID auth is not supported for this platform"));
 			return;
 #else
 			XsollaAuth.AuthViaDeviceID(onSuccess, onError);

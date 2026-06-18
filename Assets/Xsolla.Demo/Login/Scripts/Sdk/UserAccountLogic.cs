@@ -39,7 +39,7 @@ namespace Xsolla.Demo
 			{
 				var errorMessage = "LinkSocialProvider: This functionality is not supported elswere except Editor and Standalone build";
 				XDebug.LogError(errorMessage);
-				onError?.Invoke(new Error(ErrorType.MethodIsNotAllowed, errorMessage: errorMessage));
+				onError?.Invoke(new Error(ErrorType.NotSupportedOnCurrentPlatform, errorMessage: errorMessage));
 				return;
 			}
 
@@ -49,7 +49,7 @@ namespace Xsolla.Demo
 				{
 					var message = "LinkSocialProvider: Can not obtain in-built browser";
 					XDebug.LogError(message);
-					onError?.Invoke(new Error(ErrorType.MethodIsNotAllowed, errorMessage: message));
+					onError?.Invoke(new Error(ErrorType.NotSupportedOnCurrentPlatform, errorMessage: message));
 					return;
 				}
 

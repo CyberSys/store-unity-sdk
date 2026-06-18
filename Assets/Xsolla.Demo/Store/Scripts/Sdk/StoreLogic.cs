@@ -63,7 +63,7 @@ namespace Xsolla.Demo
 		{
 			if (!items.Any())
 			{
-				var error = new Error(errorMessage: "Cart is empty");
+				var error = new Error(ErrorType.InvalidData, errorMessage: "Cart is empty");
 				onError?.Invoke(error);
 				return;
 			}
@@ -103,7 +103,7 @@ namespace Xsolla.Demo
 		{
 			if (!items.Any())
 			{
-				var error = new Error(errorMessage: "Cart is empty");
+				var error = new Error(ErrorType.InvalidData, errorMessage: "Cart is empty");
 				onError?.Invoke(error);
 				return;
 			}

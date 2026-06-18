@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -38,7 +38,7 @@ namespace Xsolla.Core.Editor.AutoFillSettings
 				else
 				{
 					XDebug.LogError($"ConfirmByCode: Could not find neither token nor challengeID in '{response}'");
-					onError?.Invoke(Error.UnknownError);
+					onError?.Invoke(new Error(ErrorType.UnknownError, errorMessage: "Could not find neither token nor challengeID"));
 				}
 			};
 
@@ -66,7 +66,7 @@ namespace Xsolla.Core.Editor.AutoFillSettings
 				else
 				{
 					XDebug.LogError($"ConfirmByCode: Could not find token in '{response}'");
-					onError?.Invoke(Error.UnknownError);
+					onError?.Invoke(new Error(ErrorType.UnknownError, errorMessage: "Could not find token"));
 				}
 			};
 

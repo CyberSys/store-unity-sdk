@@ -15,7 +15,7 @@ namespace Xsolla.Demo
 			if (!TryExtractArgs(args, out var requester, out var email))
 			{
 				XDebug.LogError("PasswordlessEmailAuth.TryAuth: Could not extract arguments");
-				onError?.Invoke(new Error(errorMessage: "Passwordless auth failed"));
+				onError?.Invoke(new Error(ErrorType.InvalidData, errorMessage: "Passwordless auth failed"));
 				return;
 			}
 

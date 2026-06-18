@@ -409,7 +409,7 @@ namespace Xsolla.Auth
 			if (!XsollaToken.TryLoadInstance())
 			{
 				XDebug.Log("Failed to auth via saved token");
-				onError?.Invoke(new Error(errorMessage: "Failed to auth via saved token"));
+				onError?.Invoke(new Error(ErrorType.InvalidToken, errorMessage: "Failed to auth via saved token"));
 				return;
 			}
 
