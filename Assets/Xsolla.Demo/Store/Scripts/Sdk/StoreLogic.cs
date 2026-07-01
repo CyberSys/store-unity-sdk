@@ -1,3 +1,4 @@
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,10 @@ namespace Xsolla.Demo
 		public static void PurchaseForRealMoney(CatalogItemModel item, Action<CatalogItemModel> onSuccess, Action<Error> onError)
 		{
 			XsollaCatalog.Purchase(
-				item.Sku,
-				_ => CompletePurchase(item, () => onSuccess?.Invoke(item)),
-				error => OnPurchaseError(error, onError),
+				itemSku: item.Sku,
+				onSuccess: _ => CompletePurchase(item, () => onSuccess?.Invoke(item)),
+				onError: error => OnPurchaseError(error, onError),
+				onBrowseClosed: _ => Debug.Log("Payment browser closed"),
 				customHeaders: GenerateCustomHeaders());
 		}
 
