@@ -1,14 +1,15 @@
 # Changelog
 ## [3.1.2] - 2026-07-10
 ### Added
-- Additional info continuation for auth responses with ask URL (`/latest/ask`) across Desktop and Android flows
-- Additional parameter (user.mobile_app) in payment token creation
+- Multi-platform support for additional user information collection. Added a continuation flow for authentication responses returning an explanation URL (`/latest/ask`). Fully supported across Desktop (Standalone), Android, and WebGL platforms
+- Mobile app source tracking. Added new optional parameters (`user.mobile_app.platform` and `user.mobile_app.install_source`) during payment token creation to identify the installation source (e.g., App Store, Google Play)
 
 ### Changed
-- Expanded error codes and messages where previously error was 'unknown'
+- Replaced vague `UnknownError` instances with context-specific error codes and added detailed inline documentation (descriptions, causes, and diagnostic actions) directly into the codebase.
 
 ### Fixed
-- OnBrowserClosed callback not triggering if payment widget is closed by user
+- `OnBrowserClosed` callback not triggering if payment widget is closed by user
+- Issue where the `OnBrowserClosed` callback would not trigger if a user manually closed the in-app payment widget window before completing a transaction
 
 ## [3.1.1] - 2026-04-27
 ### Changed
