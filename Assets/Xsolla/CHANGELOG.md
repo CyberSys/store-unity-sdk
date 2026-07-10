@@ -1,4 +1,15 @@
 # Changelog
+## [3.1.2] - 2026-07-10
+### Added
+- Additional info continuation for auth responses with ask URL (`/latest/ask`) across Desktop and Android flows
+- Additional parameter (user.mobile_app) in payment token creation
+
+### Changed
+- Expanded error codes and messages where previously error was 'unknown'
+
+### Fixed
+- OnBrowserClosed callback not triggering if payment widget is closed by user
+
 ## [3.1.1] - 2026-04-27
 ### Changed
 - Internal changes and improvements
