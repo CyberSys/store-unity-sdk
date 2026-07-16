@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xsolla.Auth;
 using Xsolla.Core;
 
@@ -14,7 +14,7 @@ namespace Xsolla.Demo
 		{
 			if (!TryExtractArgs(args, out var username, out var password))
 			{
-				onError?.Invoke(new Error(errorMessage: "Basic auth failed. Can't extract username and password"));
+				onError?.Invoke(new Error(ErrorType.InvalidData, errorMessage: "Basic auth failed. Can't extract username and password"));
 				return;
 			}
 

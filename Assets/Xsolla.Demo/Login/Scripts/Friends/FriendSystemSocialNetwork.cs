@@ -144,7 +144,7 @@ namespace Xsolla.Demo
 			}
 			else
 			{
-				StoreDemoPopup.ShowError(new Error(errorMessage:"Social account linking is not supported for this platform"));
+				StoreDemoPopup.ShowError(new Error(ErrorType.NotSupportedOnCurrentPlatform, errorMessage:"Social account linking is not supported for this platform"));
 			}
 		}
 	}

@@ -158,7 +158,7 @@ namespace Xsolla.Demo
 		private void OnTimerEnd()
 		{
 			StoreDemoPopup.ShowWarning(
-				error: new Error(errorMessage: "Code expired"),
+				error: new Error(ErrorType.TimeLimitReached, errorMessage: "Code expired"),
 				buttonCallback: OnResendButton);
 		}
 
