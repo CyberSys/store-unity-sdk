@@ -53,7 +53,7 @@ namespace Xsolla.Orders
 		/// <param name="externalID">Transaction's external ID.</param>
 		/// <param name="paymentMethod">Payment method ID.</param>
 		/// <param name="customParameters">Project specific parameters represented as a valid JSON set of key-value pairs.</param>
-		/// <param name="purchaseParams">Additional purchase parameters used for user payload fields (e.g. <c>install_source</c>).</param>
+		/// <param name="purchaseParams">Additional purchase parameters used for user payload fields (e.g., mapping to <c>user.mobile_app.install_source</c> and platform metadata).</param>
 		public static void CreatePaymentToken(
 			float amount,
 			string currency,
@@ -96,7 +96,7 @@ namespace Xsolla.Orders
 		/// <param name="externalID">Transaction's external ID.</param>
 		/// <param name="paymentMethod">Payment method ID.</param>
 		/// <param name="customParameters">Project specific parameters represented as a valid JSON set of key-value pairs.</param>
-		/// <param name="purchaseParams">Additional purchase parameters used for user payload fields (e.g. <c>install_source</c>).</param>
+		/// <param name="purchaseParams">Additional purchase parameters used for user payload fields (e.g., mapping to <c>user.mobile_app.install_source</c> and platform metadata).</param>
 		public static void CreatePaymentToken(
 			float amount,
 			string currency,
